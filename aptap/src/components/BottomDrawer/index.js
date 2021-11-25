@@ -3,17 +3,14 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
-export default function TemporaryDrawer({ data }) {
+export default function TemporaryDrawer({ data, key }) {
   const [state, setState] = React.useState({
     bottom: false,
   });
+  const [select, setSelect] = React.useState(false);
   const [text, setText] = React.useState("Add to Compare");
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -25,7 +22,10 @@ export default function TemporaryDrawer({ data }) {
     }
 
     setState({ ...state, [anchor]: open });
-    setText("Remove");
+    setSelect(!select);
+    if (!select) {
+      setText("Remove");
+    }
   };
 
   const list = (anchor) => (
@@ -36,22 +36,9 @@ export default function TemporaryDrawer({ data }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {data.map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text.provider_name[index]} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button key={data}>
+          <ListItemText primary={data.provider_name} />
+        </ListItem>
       </List>
     </Box>
   );

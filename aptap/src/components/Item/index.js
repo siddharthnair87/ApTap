@@ -84,7 +84,7 @@ export default function Item({ data }) {
                     fontWeight: "bold",
                   }}
                 >
-                  <TemporaryDrawer data={data} />
+                  <TemporaryDrawer data={row} key={i} />
                 </Button>
               </TableCell>
               <TableCell align="right">
