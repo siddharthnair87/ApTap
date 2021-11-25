@@ -1,8 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { blue } from "@mui/material/colors";
 
 // const theme = createTheme({
 //   palette: {

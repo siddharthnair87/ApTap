@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,21 +7,27 @@ import StarRating from "../StarRating";
 import "./style.css";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import AddToListButton from "../BottomDrawer";
 // import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-
-// import Box from "@mui/material/Box";
 
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import TemporaryDrawer from "../BottomDrawer";
 
 export default function Item({ data }) {
+  const [list, setList] = useState([]);
+
   return (
-    // <Box sx={{ width: "80%", height: 500, background: "red" }}>
     <TableContainer component={Paper} sx={{ m: "auto", width: "90%" }}>
-      <Table aria-label="a dense table" size="small" sx={{ width: "100%" }}>
+      <Table
+        aria-label="a dense table"
+        size="small"
+        sx={{ width: "99%", m: "10px" }}
+      >
         <TableBody>
-          {data.map((row) => (
+          {data.map((row, i) => (
             <TableRow
+              // change key to generate a random code
               key={row.provider_name}
               sx={{
                 "&:last-child td, &:last-child th": { border: 0 },
@@ -54,6 +60,7 @@ export default function Item({ data }) {
                   <p>Standard Speed</p>
                 </div>
               </TableCell>
+              {/* probably refactor into a single component */}
               <TableCell align="right">
                 <div style={{ fontWeight: "700" }}>
                   <h1>£{row.set_up_cost}</h1>
@@ -74,9 +81,10 @@ export default function Item({ data }) {
                     border: "3px solid",
                     boxShadow: "0px 0px 10px #888888",
                     height: "50px",
+                    fontWeight: "bold",
                   }}
                 >
-                  Add to Compare
+                  <TemporaryDrawer data={data} />
                 </Button>
               </TableCell>
               <TableCell align="right">
@@ -86,6 +94,7 @@ export default function Item({ data }) {
                     borderRadius: "40px",
                     width: "150px",
                     height: "50px",
+                    fontWeight: "bold",
                   }}
                 >
                   Continue
@@ -102,6 +111,5 @@ export default function Item({ data }) {
         </TableBody>
       </Table>
     </TableContainer>
-    // </Box>
   );
 }
