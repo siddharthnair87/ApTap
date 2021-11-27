@@ -15,7 +15,9 @@ export default function Container() {
 
   return (
     <div>
-      <Item data={data} />
+      {data.map((individualRow) => {
+        return <Item row={individualRow} />;
+      })}
     </div>
   );
 }
