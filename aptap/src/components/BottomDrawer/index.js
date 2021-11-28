@@ -31,7 +31,7 @@ export default function BottomDrawer({
             selectedDeals.map((dealCompare) => {
               return (
                 <CompareDeals
-                  selectedDeals={dealCompare}
+                  selectedDeal={dealCompare}
                   removeDeal={removeDeal}
                 />
               );
