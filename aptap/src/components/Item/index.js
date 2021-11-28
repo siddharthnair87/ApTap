@@ -22,7 +22,7 @@ export default function Item({ data, addDeal, removeDeal, selectedDeals }) {
       </TableCell>
       <TableCell align="right">
         <div style={{ color: "#1976d2" }}>
-          <h1>£{data.monthly_price}</h1>
+          <h1>£{data.monthly_price.toFixed(2)}</h1>
           <p style={{ color: "#1976d2" }}>Monthly Cost</p>
         </div>
       </TableCell>
@@ -33,7 +33,10 @@ export default function Item({ data, addDeal, removeDeal, selectedDeals }) {
         />
       </TableCell>
       <TableCell align="right">
-        <ReusableTableCell h1text={data.set_up_cost} ptext="Setup Costs" />
+        <ReusableTableCell
+          h1text={"£" + data.set_up_cost}
+          ptext="Setup Costs"
+        />
       </TableCell>
       <TableCell align="right">
         <ReusableTableCell h1text={data.contract_info} ptext="Contract" />

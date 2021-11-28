@@ -8,10 +8,8 @@ export default function BottomDrawer({
   selectedDeals,
   removeDeal,
 }) {
-  console.log("selected deals", selectedDeals);
-
   return (
-    <div style={{ background: "blue" }}>
+    <div>
       <Drawer
         anchor={"bottom"}
         open={isOpen}
@@ -22,10 +20,18 @@ export default function BottomDrawer({
         {selectedDeals &&
           selectedDeals.map((dealCompare) => {
             return (
-              <CompareDeals
-                selectedDeals={dealCompare}
-                removeDeal={removeDeal}
-              />
+              <div
+                style={{
+                  display: "inline-block",
+                  justifyContent: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                <CompareDeals
+                  selectedDeals={dealCompare}
+                  removeDeal={removeDeal}
+                />
+              </div>
             );
           })}
       </Drawer>
