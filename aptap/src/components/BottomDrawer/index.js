@@ -9,7 +9,10 @@ export default function BottomDrawer({
   selectedDeals,
   removeDeal,
 }) {
-  const handleClick = () => {};
+  const handleClick = (data) => {
+    console.log(data);
+    setIsOpen(false);
+  };
 
   return (
     <div>
@@ -39,6 +42,7 @@ export default function BottomDrawer({
           <CustomButton
             text={`Compare deals (${selectedDeals.length} of 2)`}
             handleClick={handleClick}
+            data={selectedDeals}
           />
         </div>
       </Drawer>
