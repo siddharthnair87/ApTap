@@ -2,9 +2,9 @@ import React from "react";
 import TableCell from "@mui/material/TableCell";
 import StarRating from "../StarRating";
 import "./style.css";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ReusableTableCell from "../ReusableTableCell";
+import CustomButton from "../CustomButton";
 
 export default function Item({ data, addDeal, removeDeal, selectedDeals }) {
   console.log("Item data", data);
@@ -38,54 +38,24 @@ export default function Item({ data, addDeal, removeDeal, selectedDeals }) {
           ptext="Setup Costs"
         />
       </TableCell>
-      <TableCell align="right">
+      <TableCell align="center">
         <ReusableTableCell h1text={data.contract_info} ptext="Contract" />
       </TableCell>
       {/* probably refactor into a single component */}
 
-      <TableCell align="right">
+      <TableCell align="center">
         {!selectedDeals.includes(data) ? (
-          <Button
-            onClick={() => addDeal(data)}
-            variant="outlined"
-            style={{
-              borderRadius: "40px",
-              border: "3px solid",
-              boxShadow: "0px 0px 10px #888888",
-              height: "50px",
-              fontWeight: "bold",
-            }}
-          >
-            Add to Compare
-          </Button>
+          <CustomButton
+            text="Add to Compare"
+            handleClick={addDeal}
+            data={data}
+          />
         ) : (
-          <Button
-            onClick={() => removeDeal(data)}
-            variant="outlined"
-            style={{
-              borderRadius: "40px",
-              border: "3px solid",
-              boxShadow: "0px 0px 10px #888888",
-              height: "50px",
-              fontWeight: "bold",
-            }}
-          >
-            <p>Remove</p>
-          </Button>
+          <CustomButton text="Remove" handleClick={removeDeal} data={data} />
         )}
       </TableCell>
-      <TableCell align="right">
-        <Button
-          variant="contained"
-          style={{
-            borderRadius: "40px",
-            width: "150px",
-            height: "50px",
-            fontWeight: "bold",
-          }}
-        >
-          Continue
-        </Button>
+      <TableCell align="center">
+        <CustomButton text="Continue" />
       </TableCell>
       <TableCell align="right">
         More Info{" "}

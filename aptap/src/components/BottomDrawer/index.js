@@ -1,6 +1,7 @@
 // import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CompareDeals from "../CompareDeals";
+import CustomButton from "../CustomButton";
 
 export default function BottomDrawer({
   isOpen,
@@ -8,6 +9,8 @@ export default function BottomDrawer({
   selectedDeals,
   removeDeal,
 }) {
+  const text = `Compare deals ({selectedDeals.length} of 2)`.toLowerCase();
+
   return (
     <div>
       <Drawer
@@ -34,6 +37,7 @@ export default function BottomDrawer({
               </div>
             );
           })}
+        <CustomButton text={`Compare deals (${selectedDeals.length} of 2)`} />
       </Drawer>
     </div>
   );
