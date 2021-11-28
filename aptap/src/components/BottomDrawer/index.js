@@ -1,7 +1,8 @@
 // import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CompareDeals from "../CompareDeals";
-import CustomButton from "../CustomButton";
+
+import DialogBox from "../DialogBox";
 
 export default function BottomDrawer({
   isOpen,
@@ -9,10 +10,11 @@ export default function BottomDrawer({
   selectedDeals,
   removeDeal,
 }) {
-  const handleClick = (data) => {
-    console.log(data);
-    setIsOpen(false);
-  };
+  // const handleClick = (data) => {
+  //   console.log(data);
+  //   setIsOpen(false);
+  //   return <DialogBox />;
+  // };
 
   return (
     <div>
@@ -39,12 +41,8 @@ export default function BottomDrawer({
                 />
               );
             })}
-          <CustomButton
-            text={`Compare deals (${selectedDeals.length} of 2)`}
-            handleClick={handleClick}
-            data={selectedDeals}
-          />
         </div>
+        <DialogBox selectedDeals={selectedDeals} />
       </Drawer>
     </div>
   );
