@@ -7,7 +7,7 @@ import ReusableTableCell from "../ReusableTableCell";
 import CustomButton from "../CustomButton";
 
 export default function Item({ data, addDeal, removeDeal, selectedDeals }) {
-  console.log("Item data", data);
+  // console.log("Item data", data);
   return (
     <>
       <TableCell component="th" scope="card">
@@ -17,7 +17,7 @@ export default function Item({ data, addDeal, removeDeal, selectedDeals }) {
         <div style={{ width: "300px" }}>
           <h1 style={{ textAlign: "left" }}>{data.provider_name}</h1>
           <p style={{ textAlign: "left" }}>{data.deal_name}</p>
-          <StarRating rating={DataTransferItem.provider_rating} />
+          <StarRating rating={data.provider_rating} />
         </div>
       </TableCell>
       <TableCell align="right">

@@ -9,7 +9,7 @@ import Rating from "@mui/material/Rating";
 //     },
 //   },
 // });
-export default function BasicRating({ rating }) {
+export default function StarRating({ rating }) {
   const newRating = (rating * 10) / 2;
 
   return (

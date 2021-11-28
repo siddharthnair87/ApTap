@@ -9,7 +9,7 @@ export default function BottomDrawer({
   selectedDeals,
   removeDeal,
 }) {
-  const text = `Compare deals ({selectedDeals.length} of 2)`.toLowerCase();
+  const handleClick = () => {};
 
   return (
     <div>
@@ -20,24 +20,27 @@ export default function BottomDrawer({
           setIsOpen(false);
         }}
       >
-        {selectedDeals &&
-          selectedDeals.map((dealCompare) => {
-            return (
-              <div
-                style={{
-                  display: "inline-block",
-                  justifyContent: "center",
-                  flexWrap: "wrap",
-                }}
-              >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {selectedDeals &&
+            selectedDeals.map((dealCompare) => {
+              return (
                 <CompareDeals
                   selectedDeals={dealCompare}
                   removeDeal={removeDeal}
                 />
-              </div>
-            );
-          })}
-        <CustomButton text={`Compare deals (${selectedDeals.length} of 2)`} />
+              );
+            })}
+          <CustomButton
+            text={`Compare deals (${selectedDeals.length} of 2)`}
+            handleClick={handleClick}
+          />
+        </div>
       </Drawer>
     </div>
   );

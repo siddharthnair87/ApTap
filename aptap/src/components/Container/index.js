@@ -12,7 +12,7 @@ export default function Container() {
   const [selectedDeals, setSelectedDeals] = useState([]);
   const [data, setData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  console.log("data", data);
+  // console.log("data", data);
   useEffect(() => {
     async function getData() {
       const request = await axios.get();
@@ -26,14 +26,28 @@ export default function Container() {
   };
 
   const addDeal = (data) => {
-    setSelectedDeals([...selectedDeals, data]);
+    let newDeals = [...selectedDeals];
+
+    if (newDeals.length >= 2) {
+      newDeals = [selectedDeals[selectedDeals.length - 1]];
+    }
+    // console.log("newDeals", newDeals);
+
+    if (data !== newDeals[0]) {
+      newDeals.push(data);
+
+      setSelectedDeals(newDeals);
+    }
+
     toggleDrawer();
   };
+
   const removeDeal = (data) => {
     setSelectedDeals(selectedDeals.filter((deal) => deal !== data));
     toggleDrawer();
   };
-  console.log("container", selectedDeals);
+  // console.log("container", selectedDeals);
+
   return (
     <div>
       <TableContainer
@@ -62,7 +76,9 @@ export default function Container() {
                   >
                     <Item
                       data={rows}
-                      addDeal={addDeal}
+                      addDeal={(row) => {
+                        addDeal(row);
+                      }}
                       removeDeal={removeDeal}
                       selectedDeals={selectedDeals}
                     />
