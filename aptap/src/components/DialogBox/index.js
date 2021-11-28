@@ -1,20 +1,10 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
-import Avatar from "@mui/material/Avatar";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import PersonIcon from "@mui/icons-material/Person";
-import AddIcon from "@mui/icons-material/Add";
-import Typography from "@mui/material/Typography";
-import { blue } from "@mui/material/colors";
-import { DialogContent, TableContainer } from "@mui/material";
+import { TableContainer } from "@mui/material";
 import StarRating from "../StarRating";
-import TableRowComponent from "./TableRowComponent";
 import Paper from "@mui/material/Paper";
 
 function SimpleDialog(props) {
@@ -40,19 +30,16 @@ function SimpleDialog(props) {
         sx={{
           m: "auto",
           width: "90%",
-          //   borderRadius: "25px",
           justifyContent: "center",
         }}
       >
         <DialogTitle style={{ fontWeight: 800, fontSize: "30px" }}>
           Compare
         </DialogTitle>
-        {/* <DialogContent dividers></DialogContent> */}
         <table class="table table-striped" style={{ width: "1200px" }}>
           <thead>
             <tr>
               <th scope="col"></th>
-              {/* <th scope="col">{First}</th> */}
               {selectedValue.map((value) => {
                 return (
                   <th scope="col">
@@ -65,8 +52,6 @@ function SimpleDialog(props) {
                       />
                       <div
                         style={{
-                          // flexWrap: "wrap",
-
                           marginTop: "20px",
                         }}
                       >

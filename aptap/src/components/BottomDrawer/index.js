@@ -1,4 +1,3 @@
-// import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CompareDeals from "../CompareDeals";
 
@@ -10,12 +9,6 @@ export default function BottomDrawer({
   selectedDeals,
   removeDeal,
 }) {
-  // const handleClick = (data) => {
-  //   console.log(data);
-  //   setIsOpen(false);
-  //   return <DialogBox />;
-  // };
-
   return (
     <div>
       <Drawer
